@@ -1,0 +1,80 @@
+{
+	"name": "@zxj/jp",
+	"version": "0.2.1",
+	"description": "a jenkins publish cli",
+	"keywords": [
+		"cli",
+		"cli-app",
+		"jenkins",
+		"jp",
+		"npm",
+		"publish"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zxj963577494/jp"
+	},
+	"homepage": "https://github.com/zxj963577494/jp",
+	"authors": [
+		"zhengxujiang <963577494@qq.com> (https://github.com/zxj963577494)"
+	],
+	"bugs": {
+		"url": "https://github.com/zxj963577494/jp/issues"
+	},
+	"license": "MIT",
+	"files": [
+		"/bin",
+		"/oclif.manifest.json",
+		"/src"
+	],
+	"main": "src/index.js",
+	"bin": {
+		"jp": "./bin/run"
+	},
+	"scripts": {
+		"prepack": "oclif-dev manifest && oclif-dev readme",
+		"postpack": "rm -f oclif.manifest.json",
+		"prepublishOnly": "np --no-cleanup --yolo --no-publish"
+	},
+	"dependencies": {
+		"@hspkg/update-notifier": "^1.1.1",
+		"@oclif/command": "^1.5.14",
+		"@oclif/config": "^1.13.0",
+		"@oclif/plugin-help": "^2.2.0",
+		"chalk": "^2.3.0",
+		"cheerio": "^1.0.0-rc.3",
+		"fs-extra": "^8.0.1",
+		"fuzzy": "^0.1.3",
+		"inquirer": "^6.2.1",
+		"inquirer-autocomplete-prompt": "^1.0.1",
+		"lodash": "^4.17.11",
+		"ora": "^3.4.0",
+		"promise": "^8.0.3",
+		"qs": "^6.7.0",
+		"superagent": "^5.0.5",
+		"terminal-link": "^1.2.0",
+		"update-notifier": "^2.1.0"
+	},
+	"devDependencies": {
+		"@oclif/dev-cli": "^1.22.0",
+		"np": "^5.0.2"
+	},
+	"engines": {
+		"git": ">=2.11.0",
+		"node": ">=8",
+		"npm": ">=6.8.0",
+		"yarn": ">=1.7.0"
+	},
+	"oclif": {
+		"commands": "./src/commands",
+		"bin": "jp",
+		"plugins": [
+			"@oclif/plugin-help"
+		],
+		"hooks": {
+			"init": [
+				"./src/hooks/version"
+			]
+		}
+	}
+}
